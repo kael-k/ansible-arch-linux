@@ -1,0 +1,66 @@
+---
+- name: "Ensure group \"{{ item }}\" exists"
+  become: true
+  ansible.builtin.group:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ [user.group] + user.groups }}"
+
+- name: "Ensure user \"{{ user.username }}\" exists with correct config"
+  become: true
+  ansible.builtin.user:
+    name: "{{ user.username }}"
+    group: "{{ user.group }}"
+    shell: "{{ user.shell }}"
+    groups: "{{ user.groups }}"
+
+- name: Set authorized key taken from file
+  become: true
+  become_user: "{{ user.username }}"
+  ansible.posix.authorized_key:
+    user: "{{ user.username }}"
+    state: present
+    key: "{{ lookup('file', '/home/' + user.username + '/.ssh/id_ed25519.pub') }}"
+
+- name: Git config user.name
+  become: true
+  become_user: "{{ user.username }}"
+  community.general.git_config:
+    name: user.name
+    scope: global
+    value: "{{ git.name }}"
+
+- name: Git config user.email
+  become: true
+  become_user: "{{ user.username }}"
+  community.general.git_config:
+    name: user.email
+    scope: global
+    value: "{{ git.email_b64 | b64decode }}"
+
+- name: Copy file with owner and permissions
+  become: true
+  become_user: "{{ user.username }}"
+  ansible.builtin.copy:
+    src: resources/home
+    dest: "/home/{{ user.username }}"
+    directory_mode: true
+    remote_src: true
+    mode: u=rwX,g=rX,o=rX
+    owner: "{{ user.username }}"
+    group: "{{ user.group }}"
+
+# HACK: not the cleanest solution
+- name: "Set password for user {{ user.username }}"
+  no_log: true
+  ansible.builtin.shell: > # noqa command-instead-of-shell
+    set -o pipefail && echo {{ user_password | b64encode }} | base64 -d | passwd {{ user.username }} -s
+
+- name: Allow wheel group to sudo
+  become: true
+  community.general.sudoers:
+    name: group-wheel
+    nopassword: false
+    state: present
+    group: wheel
+    commands: ALL

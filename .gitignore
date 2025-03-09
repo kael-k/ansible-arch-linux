@@ -1,5 +1,2 @@
-# Environments
-.env
-.venv
-env/
+.ansible/
 venv/

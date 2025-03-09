@@ -1,0 +1,31 @@
+---
+- name: Copy mkinitcpio.conf config
+  ansible.builtin.copy:
+    src: resources/system/etc/mkinitcpio.conf
+    dest: /etc/mkinitcpio.conf
+    mode: "0644"
+    remote_src: true
+    owner: root
+    group: root
+  become: true
+
+- name: Build kernel image
+  become: true
+  ansible.builtin.command: mkinitcpio -P
+
+- name: Copy sshd_config config
+  ansible.builtin.copy:
+    src: resources/system/etc/ssh/sshd_config
+    dest: /etc/ssh/sshd_config
+    mode: "0644"
+    remote_src: true
+    owner: root
+    group: root
+  become: true
+
+- name: "Enabling systemd service - {{ item }}"
+  ansible.builtin.systemd:
+    name: "{{ item }}"
+    enabled: true
+  become: true
+  loop: "{{ systemd.enable_units }}"

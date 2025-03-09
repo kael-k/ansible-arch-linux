@@ -1,0 +1,32 @@
+---
+- name: Install systemd-boot
+  become: true
+  ansible.builtin.command: bootctl install
+
+- name: Create entry for archlinux in systemd-boot
+  ansible.builtin.copy:
+    dest: "/boot/loader/entries/arch.conf"
+    owner: root
+    group: root
+    mode: "0600"
+    content: |
+      title   Arch Linux
+      linux   /vmlinuz-linux
+      initrd  /initramfs-linux.img
+      options {{ boot.kernel_params }}
+
+- name: Create entry for archlinux in systemd-boot
+  ansible.builtin.copy:
+    dest: "/boot/loader/entries/arch-fallback.conf"
+    owner: root
+    group: root
+    mode: "0600"
+    content: |
+      title   Arch Linux (fallback initramfs)
+      linux   /vmlinuz-linux
+      initrd  /initramfs-linux-fallback.img
+      options {{ boot.kernel_params }}
+
+- name: Ensure configurations are valid
+  become: true
+  ansible.builtin.command: bootctl

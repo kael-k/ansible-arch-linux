@@ -1,0 +1,24 @@
+---
+- name: Setup Arch Linux
+  hosts: localhost
+  vars_prompt:
+    - name: "user_password"
+      prompt: "Enter the password for non-root user"
+      private: true
+    - name: "user_password2"
+      prompt: "Enter again the password for non-root user"
+      private: true
+  vars:
+    ansible_become_password: "{{ user_password }}"
+  pre_tasks:
+    - name: Check that the input passwords are the same
+      ansible.builtin.fail:
+        msg: Input passwords were diffetent
+      when: user_password != user_password2
+  roles:
+    - { role: 00_base_system }
+    - { role: 01_packages }
+    - { role: 02_users_and_groups }
+    - { role: 03_aur_packages }
+    - { role: 04_system_setup }
+    - { role: 05_bootloader }

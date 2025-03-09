@@ -1,13 +1,16 @@
 # ansible-arch-linux
 
-[![Lint](https://github.com/loganmarchione/ansible-arch-linux/actions/workflows/lint.yml/badge.svg)](https://github.com/loganmarchione/ansible-arch-linux/actions/workflows/lint.yml)
+(Forked and adapred for my needs from [https://github.com/loganmarchione/ansible-arch-linux](https://github.com/loganmarchione/ansible-arch-linux))
+
+[![Lint](https://github.com/kael-k/ansible-arch-linux/actions/workflows/lint.yml/badge.svg)](https://github.com/kael-k/ansible-arch-linux/actions/workflows/lint.yml/badge.svg)
 
 Ansible playbook to setup my Arch Linux machines (i.e., meant to be run against localhost)
 
 ## Explanation
 
 * This is meant for _my machine_. You can use it as a guide, but please don't blindly run it on your machine (it will break things).
-* This is meant to be run in the [Post-installation](https://wiki.archlinux.org/title/installation_guide#Post-installation) section of the [Installation guide](https://wiki.archlinux.org/title/installation_guide) (i.e., after your partitions are setup, user account is created, fstab is setup, chroot, etc...)
+* This is meant to be run during the installation process, after disks setup, pacstrap and arch-chroot
+    * https://wiki.archlinux.org/title/Installation_guide#Chroot
 
 ## Requirements
 
@@ -17,7 +20,7 @@ Ansible playbook to setup my Arch Linux machines (i.e., meant to be run against 
    ```
 1. Clone this repo
    ```
-   git clone https://github.com/loganmarchione/ansible-arch-linux.git
+   git clone https://github.com/kael-k/ansible-arch-linux.git
    cd ansible-arch-linux
    ```
 1. Install Ansible
@@ -39,6 +42,3 @@ Ansible playbook to setup my Arch Linux machines (i.e., meant to be run against 
    ```
    ansible-playbook main.yml --ask-become-pass
    ```
-
-## TODO
-- [X] Add reflector pacman hook

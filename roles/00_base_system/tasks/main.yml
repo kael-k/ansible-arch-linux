@@ -1,0 +1,37 @@
+---
+- name: Link timezone to /etc/localtime
+  become: true
+  ansible.builtin.file:
+    src: "{{ localtime }}"
+    dest: /etc/localtime
+    owner: root
+    group: root
+    state: link
+
+- name: Hwclock --systohc
+  become: true
+  ansible.builtin.command: hwclock --systohc
+
+- name: Ensure locales exist
+  become: true
+  community.general.locale_gen:
+    name: "{{ locales }}"
+    state: present
+
+- name: Define /etc/hostname
+  ansible.builtin.copy:
+    dest: "/etc/hostname"
+    content: |
+      {{ host.hostname }}
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: Define /etc/vconsole.conf
+  ansible.builtin.copy:
+    dest: "/etc/vconsole.conf"
+    content: |
+      KEYMAP={{ keyboard_layout }}
+    owner: root
+    group: root
+    mode: "0644"

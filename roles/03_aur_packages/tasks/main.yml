@@ -1,0 +1,14 @@
+---
+- name: Installing AUR helper
+  become: true
+  become_user: "{{ user.username }}"
+  kewlfft.aur.aur:
+    name: "yay"
+
+- name: Install AUR packages
+  become: true
+  become_user: "{{ user.username }}"
+  kewlfft.aur.aur:
+    name: "{{ packages.aur }}"
+    state: present
+    use: "yay"
