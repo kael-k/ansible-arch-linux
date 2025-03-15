@@ -1,0 +1,11 @@
+---
+- name: Configure Plymouth
+  ansible.builtin.copy:
+    content: |
+      [Daemon]
+      Theme=Script
+    dest: /etc/plymouth/plymouthd.conf
+    mode: "0644"
+    owner: root
+    group: root
+  become: true

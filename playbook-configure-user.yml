@@ -1,0 +1,5 @@
+---
+- name: Configure user
+  hosts: localhost
+  roles:
+    - { role: 04_configure_user }

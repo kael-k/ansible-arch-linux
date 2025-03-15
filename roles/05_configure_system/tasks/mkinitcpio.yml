@@ -1,0 +1,14 @@
+---
+- name: Copy mkinitcpio.conf config
+  ansible.builtin.copy:
+    src: resources/system/etc/mkinitcpio.conf
+    dest: /etc/mkinitcpio.conf
+    mode: "0644"
+    remote_src: true
+    owner: root
+    group: root
+  become: true
+
+- name: Build kernel image
+  become: true
+  ansible.builtin.command: mkinitcpio -P

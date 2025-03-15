@@ -1,0 +1,7 @@
+---
+- name: "Enabling systemd service - {{ item }}"
+  ansible.builtin.systemd:
+    name: "{{ item }}"
+    enabled: true
+  become: true
+  loop: "{{ systemd.enable_units }}"

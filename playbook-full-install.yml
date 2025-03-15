@@ -20,5 +20,6 @@
     - { role: 01_packages }
     - { role: 02_users_and_groups }
     - { role: 03_aur_packages }
-    - { role: 04_system_setup }
-    - { role: 05_bootloader }
+    - { role: 04_configure_user }
+    - { role: 05_configure_system }
+    - { role: 06_bootloader }

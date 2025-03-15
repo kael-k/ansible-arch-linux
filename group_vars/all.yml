@@ -7,7 +7,7 @@ locales:
 keyboard_layout: us
 
 bootloader:
-  kernel_params: rd.luks.name=<UUID>=luksroot root=/dev/mapper/luksroot rootflags=subvol=@
+  kernel_params: rd.luks.name=<uuid>=luksroot root=/dev/mapper/luksroot rootflags=subvol=@ splash quiet
 
 host:
   hostname: kael-k-t495
@@ -18,6 +18,7 @@ systemd:
     - cups.socket
     - greetd.service
     - NetworkManager.service
+    - plocate-updatedb.timer
     - systemd-timesyncd.service
     - systemd-boot-update.service
 git:
@@ -39,14 +40,17 @@ user:
 packages:
   aur:
     - act-bin
-    - albert
     - anki-bin
     - canon-pixma-ts5055-complete
+    - eww
+    - gobuster
     - gphotofs
     - grimshot
+    - greetd-qtgreet
     - jetbrains-toolbox
     - minecraft-launcher
     - openvpn-update-systemd-resolved
+    - seclists
     - teamviewer
     - ungoogled-chromium-bin
     - yay
@@ -125,13 +129,17 @@ packages:
     - perl-image-exiftool
     - pipewire-alsa
     - pipewire-pulse
+    - plocate
     - podman
+    - podman-compose
     - pre-commit
     - python
     - plymouth
     - qemu-full
+    - qt6-wayland
     - ranger
     - remmina
+    - rofi-wayland
     - sane-airscan
     - screen
     - signal-desktop

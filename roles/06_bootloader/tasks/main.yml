@@ -4,6 +4,7 @@
   ansible.builtin.command: bootctl install
 
 - name: Create entry for archlinux in systemd-boot
+  become: true
   ansible.builtin.copy:
     dest: "/boot/loader/entries/arch.conf"
     owner: root
@@ -13,9 +14,10 @@
       title   Arch Linux
       linux   /vmlinuz-linux
       initrd  /initramfs-linux.img
-      options {{ boot.kernel_params }}
+      options {{ bootloader.kernel_params }}
 
 - name: Create entry for archlinux in systemd-boot
+  become: true
   ansible.builtin.copy:
     dest: "/boot/loader/entries/arch-fallback.conf"
     owner: root
@@ -25,7 +27,7 @@
       title   Arch Linux (fallback initramfs)
       linux   /vmlinuz-linux
       initrd  /initramfs-linux-fallback.img
-      options {{ boot.kernel_params }}
+      options {{ bootloader.kernel_params }}
 
 - name: Ensure configurations are valid
   become: true

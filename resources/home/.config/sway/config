@@ -19,7 +19,9 @@ set $term kitty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu albert | xargs swaymsg exec --
+
+set $menu rofi -show drun -show-icons
+set $active_windows rofi -show window -show-icons
 
 ### Output configuration
 #
@@ -72,6 +74,7 @@ output * scale 1
 
     # Start your launcher
     bindsym $mod+space exec $menu
+    bindsym $mod+tab exec $active_windows
 
     # Lock screen
     bindsym $mod+l exec swaylock -c 000000

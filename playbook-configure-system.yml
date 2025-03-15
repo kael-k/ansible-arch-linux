@@ -1,0 +1,6 @@
+---
+- name: Configure system
+  hosts: localhost
+  roles:
+    - { role: 05_configure_system }
+    - { role: 06_bootloader }

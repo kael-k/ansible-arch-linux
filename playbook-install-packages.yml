@@ -1,0 +1,6 @@
+---
+- name: Install
+  hosts: localhost
+  roles:
+    - { role: 01_packages }
+    - { role: 03_aur_packages }
