@@ -35,12 +35,15 @@
     - .config
     - .local
 
-- name: Copy .zshrc with owner and permissions
+- name: Copy home files with owner and permissions
   become: true
   become_user: "{{ user.username }}"
   ansible.builtin.copy:
-    src: resources/home/.zshrc
-    dest: "/home/{{ user.username }}/.zshrc"
+    src: "resources/home/{{ item }}"
+    dest: "/home/{{ user.username }}/{{ item }}"
     mode: "0660"
     owner: "{{ user.username }}"
     group: "{{ user.group }}"
+  loop:
+    - .zshrc
+    - .zsh_plugins.txt

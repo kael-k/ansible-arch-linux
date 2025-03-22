@@ -42,7 +42,6 @@ packages:
     - act-bin
     - anki-bin
     - canon-pixma-ts5055-complete
-    - eww
     - gobuster
     - gphotofs
     - grimshot
@@ -53,7 +52,9 @@ packages:
     - seclists
     - teamviewer
     - ungoogled-chromium-bin
+    - waybar
     - yay
+    - zsh-antidote
   official_repos:
     - android-tools
     - audacity

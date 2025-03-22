@@ -17,5 +17,10 @@ alias x=ranger
 alias sway="dbus-run-session sway"
 alias glg="git log --stat --all --graph"
 
+source /usr/share/zsh-antidote/antidote.zsh
+antidote load
+autoload -Uz promptinit && promptinit && prompt pure
+autoload -U compinit && compinit
+autoload -U bashcompinit && bashcompinit
 
 eval $(thefuck --alias)

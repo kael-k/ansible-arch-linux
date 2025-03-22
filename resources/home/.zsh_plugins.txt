@@ -1,0 +1,11 @@
+zsh-users/zsh-autosuggestions
+
+belak/zsh-utils path:editor
+belak/zsh-utils path:history
+belak/zsh-utils path:prompt
+belak/zsh-utils path:utility
+
+# prompts:
+#   with prompt plugins, remember to add this to your .zshrc:
+#   `autoload -Uz promptinit && promptinit && prompt pure`
+sindresorhus/pure     kind:fpath
