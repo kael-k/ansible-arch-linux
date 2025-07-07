@@ -146,6 +146,7 @@ packages:
     - sway
     - swaybg
     - swaylock
+    - swaync
     - tailscale
     - thefuck
     - thunderbird
