@@ -7,7 +7,7 @@ locales:
 keyboard_layout: us
 
 bootloader:
-  kernel_params: rd.luks.name=<uuid>=luksroot root=/dev/mapper/luksroot rootflags=subvol=@ splash quiet
+  kernel_params: rd.luks.name=c176601b-616f-44bf-8ebd-12361dcacdc5=luksroot root=/dev/mapper/luksroot rootflags=subvol=@ splash quiet
 
 host:
   hostname: kael-k-t495
@@ -16,7 +16,6 @@ systemd:
   enable_units:
     - bluetooth.service
     - cups.socket
-    - greetd.service
     - NetworkManager.service
     - plocate-updatedb.timer
     - systemd-timesyncd.service
@@ -45,7 +44,6 @@ packages:
     - gobuster
     - gphotofs
     - grimshot
-    - greetd-qtgreet
     - jetbrains-toolbox
     - minecraft-launcher
     - openvpn-update-systemd-resolved
@@ -86,7 +84,6 @@ packages:
     - gnome-keyring
     - gparted
     - gphoto2
-    - greetd
     - gvfs-mtp
     - hashcat
     - helm
@@ -160,12 +157,14 @@ packages:
     - unrar
     - unzip
     - usbutils
+    - uv
     - vim
     - virt-manager
     - vlc
     - whois
     - wireguard-tools
     - wireplumber
+    - xdg-desktop-portal-wlr
     - xorg-xwayland
     - zip
     - zsh

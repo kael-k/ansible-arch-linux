@@ -5,9 +5,6 @@
 - name: Setup sshd
   ansible.builtin.import_tasks: sshd.yml
 
-- name: Setup greetd
-  ansible.builtin.import_tasks: greetd.yml
-
 - name: Build initramfs
   ansible.builtin.import_tasks: mkinitcpio.yml
 
