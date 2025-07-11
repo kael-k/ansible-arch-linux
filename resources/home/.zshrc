@@ -2,6 +2,8 @@ export PATH="$PATH:/opt/android-sdk/tools/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
 export ANDROID_HOME="/opt/android-sdk"
+export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u)/bus"
+
 
 # fix jetbrains blank windows bug https://github.com/baskerville/bspwm/issues/52#issuecomment-24199556
 export _JAVA_AWT_WM_NONREPARENTING=1

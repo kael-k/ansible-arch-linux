@@ -1,3 +1,17 @@
+-- Auto-install vim-plug if not present
+local fn = vim.fn
+local install_path = fn.stdpath("data") .. "/site/autoload/plug.vim"
+
+if fn.empty(fn.glob(install_path)) > 0 then
+  print("Installing vim-plug...")
+  fn.system({
+    "sh", "-c",
+    "curl -fLo " .. install_path ..
+    " --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+  })
+  print("vim-plug installed. Restart Neovim and run :PlugInstall")
+end
+
 ----Initialize vim-plug
 local Plug = vim.fn['plug#']
 vim.call('plug#begin')
@@ -172,5 +186,12 @@ set nowrap                      "disable text wrapping
 autocmd BufNewFile,BufRead *[jJ]enkinsfile set syntax=groovy  "set syntax highlight for Jenkinsfile(s)
 autocmd BufNewFile,BufRead [jJ]enkinsfile.* set syntax=groovy  "set syntax highlight for Jenkinsfile(s)
 
-highlight ColorColumn ctermbg=9 "display ugly bright red bar at color column number
+hi ColorColumn ctermbg=9 "display ugly bright red bar at color column number
+hi diffAdded cterm=bold ctermfg=DarkGreen
+hi diffRemoved cterm=bold ctermfg=DarkRed
+
+hi diffFile cterm=NONE ctermfg=DarkBlue
+hi gitcommitDiff cterm=NONE ctermfg=DarkBlue
+hi diffIndexLine cterm=NONE ctermfg=DarkBlue
+hi diffLine cterm=NONE ctermfg=DarkBlue
 ]])

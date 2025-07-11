@@ -120,7 +120,9 @@ packages:
     - networkmanager
     - networkmanager-openvpn
     - nmap
+    - nodejs
     - noto-fonts-cjk
+    - npm
     - nss-mdns
     - ntfs-3g
     - pavucontrol
@@ -165,6 +167,7 @@ packages:
     - whois
     - wireguard-tools
     - wireplumber
+    - wqy-microhei
     - xdg-desktop-portal-wlr
     - xorg-xwayland
     - zip
