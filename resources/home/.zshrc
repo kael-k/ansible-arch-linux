@@ -1,6 +1,7 @@
 export PATH="$PATH:/opt/android-sdk/tools/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
+export EDITOR="nvim"
 export ANDROID_HOME="/opt/android-sdk"
 export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u)/bus"
 
@@ -21,8 +22,10 @@ alias glg="git log --stat --all --graph"
 
 source /usr/share/zsh-antidote/antidote.zsh
 antidote load
-autoload -Uz promptinit && promptinit && prompt pure
+
 autoload -U compinit && compinit
+autoload -Uz promptinit && promptinit && prompt pure
 autoload -U bashcompinit && bashcompinit
+
 
 eval $(thefuck --alias)
