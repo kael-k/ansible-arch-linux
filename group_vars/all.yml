@@ -155,7 +155,7 @@ packages:
     - tmux
     - transmission-gtk
     - tree
-    - ttf-font-awesome
+    - ttf-meslo-nerd
     - ttf-roboto
     - unrar
     - unzip
