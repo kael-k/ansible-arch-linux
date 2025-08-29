@@ -45,8 +45,8 @@ packages:
     - gphotofs
     - grimshot
     - jetbrains-toolbox
-    - minecraft-launcher
     - openvpn-update-systemd-resolved
+    - pulseaudio-ctl
     - seclists
     - teamviewer
     - ungoogled-chromium-bin
@@ -56,14 +56,18 @@ packages:
   official_repos:
     - android-tools
     - audacity
+    - b4
     - base
     - base-devel
     - bitwarden
+    - bind
     - blueman
     - bluez
     - brightnessctl
+    - breeze-gtk
     - btrfs-progs
     - calibre
+    - chezmoi
     - code
     - containerd
     - cups
@@ -75,8 +79,16 @@ packages:
     - efibootmgr
     - efivar
     - exfatprogs
+    - fcitx5
+    - fcitx5-breeze
+    - fcitx5-chinese-addons
+    - fcitx5-configtool
+    - fcitx5-gtk
+    - fcitx5-im
+    - fd
     - firefox
     - fuse-overlayfs
+    - fzf
     - gimp
     - git
     - github-cli
@@ -93,6 +105,7 @@ packages:
     - hunspell-it
     - hunspell-nl
     - imagemagick
+    - isync
     - inetutils
     - jdk8-openjdk
     - k9s
@@ -112,8 +125,10 @@ packages:
     - man-db
     - minikube
     - mpv
+    - msmtp
     - nautilus
     - ncdu
+    - neomutt
     - neovim
     - nerdctl
     - net-tools
@@ -121,6 +136,7 @@ packages:
     - networkmanager-openvpn
     - nmap
     - nodejs
+    - notmuch
     - noto-fonts-cjk
     - npm
     - nss-mdns
