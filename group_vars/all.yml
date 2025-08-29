@@ -20,12 +20,14 @@ systemd:
     - plocate-updatedb.timer
     - systemd-timesyncd.service
     - systemd-boot-update.service
+git:
+  name: "Kael D'Alcamo"
+  email_b64: ZGV2QGthZWwtay5pbw==
 
 user:
   username: kael-k
   group: kael-k
   shell: /bin/zsh
-  chezmoi_repo: git@github.com:kael-k/dotfiles.git
   groups:
     - ssh
     - libvirt
