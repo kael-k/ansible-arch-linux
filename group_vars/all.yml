@@ -114,6 +114,7 @@ packages:
     - kubectl
     - kubectx
     - kustomize
+    - lazygit
     - libnma
     - libreoffice-fresh
     - libvirt
